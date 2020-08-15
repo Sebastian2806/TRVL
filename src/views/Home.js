@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import HeaderTemplate from '../components/templates/HeaderTemplate';
-import LakeBled from '../assets/img/Lake Bled.jpg';
 import Cards from '../components/organisms/Cards';
+import { places } from '../util/places';
 
 const StyledFullWindow = styled.div`
   position: absolute;
@@ -16,16 +16,20 @@ const StyledFullWindow = styled.div`
 `;
 
 const StyledBackground = styled(StyledFullWindow)`
-  background: url(${({ img }) => `"${img}"`}) no-repeat center;
+  background: url(${({ img }) => `'${img}'`}) no-repeat center;
   background-size: cover;
 `;
 
 const Home = () => {
+  const [currentPlace] = useState(3);
+
+  const img = places.find((el) => el.id === currentPlace).src.jpg;
+
   return (
     <HeaderTemplate>
-      <StyledBackground img={LakeBled} />
+      <StyledBackground img={`${img}`} />
       <StyledFullWindow />
-      <Cards />
+      <Cards currentPlace={currentPlace} />
     </HeaderTemplate>
   );
 };

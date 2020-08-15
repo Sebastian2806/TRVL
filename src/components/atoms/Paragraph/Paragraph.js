@@ -5,7 +5,7 @@ const Paragraph = styled.p`
   padding: 0;
   color: ${({ theme }) => theme.light};
   font-size: ${({ theme, fontSize }) => theme.fonts[fontSize] || theme.fonts.s};
-  text-transform: ${({ uppercase }) => (uppercase ? 'uppercase' : 'lowercase')};
+  text-transform: ${({ uppercase }) => (uppercase ? 'uppercase' : 'none')};
 `;
 
 export default Paragraph;
