@@ -4,6 +4,7 @@ export const theme = {
   dark: '#262424',
 
   fonts: {
+    s: '1.4rem',
     m: '1.8rem',
     l: '2.4rem',
     xl: '3.6rem',
