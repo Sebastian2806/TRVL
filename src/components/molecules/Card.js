@@ -14,11 +14,18 @@ const StyledWrapper = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 10;
+  position: absolute;
+  top: calc(50% + 40px);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transform: translateY(-50%);
 
   ${({ secondary }) =>
     secondary &&
     css`
-      transform: perspective(1000px) rotate3d(0, 1, 0, ${({ side }) => (side === 'left' ? '0.05turn' : '-0.05turn')});
+      transform: translate(${({ side }) => (side === 'left' ? '-255px' : '255px')}, -50%) perspective(1000px)
+        rotate3d(0, 1, 0, ${({ side }) => (side === 'left' ? '0.05turn' : '-0.05turn')});
       width: 225px;
       height: 460px;
       opacity: 0.8;
@@ -28,7 +35,8 @@ const StyledWrapper = styled.div`
   ${({ tertiary }) =>
     tertiary &&
     css`
-      transform: perspective(1000px) rotate3d(0, 1, 0, ${({ side }) => (side === 'left' ? '0.05turn' : '-0.05turn')});
+      transform: translate(${({ side }) => (side === 'left' ? '-480px' : '480px')}, -50%) perspective(1000px)
+        rotate3d(0, 1, 0, ${({ side }) => (side === 'left' ? '0.05turn' : '-0.05turn')});
       width: 205px;
       height: 415px;
       opacity: 0.6;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import HeaderTemplate from '../components/templates/HeaderTemplate';
 import Cards from '../components/organisms/Cards';
-import { places } from '../util/places';
+import { useCurrentPlace } from '../hooks/useCurrentPlace';
 
 const StyledFullWindow = styled.div`
   position: absolute;
@@ -21,15 +21,15 @@ const StyledBackground = styled(StyledFullWindow)`
 `;
 
 const Home = () => {
-  const [currentPlace] = useState(3);
+  const [currentPlace, setCurrentPlace] = useState(3);
 
-  const img = places.find((el) => el.id === currentPlace).src.jpg;
+  const img = useCurrentPlace(currentPlace).src.jpg;
 
   return (
     <HeaderTemplate>
       <StyledBackground img={`${img}`} />
       <StyledFullWindow />
-      <Cards currentPlace={currentPlace} />
+      <Cards currentPlace={currentPlace} setCurrentPlace={setCurrentPlace} />
     </HeaderTemplate>
   );
 };

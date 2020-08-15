@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Card from '../molecules/Card';
 import Arrow from '../atoms/Arrow/Arrow';
-// import { places } from '../../util/places';
+import { places } from '../../util/places';
+import { useCurrentPlace } from '../../hooks/useCurrentPlace';
 
 const StyledWrapper = styled.main`
   margin: 0 auto;
@@ -12,9 +14,6 @@ const StyledWrapper = styled.main`
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
   padding-top: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
 `;
 
 const StyledArrow = styled(Arrow)`
@@ -31,7 +30,19 @@ const RightArrow = styled(StyledArrow)`
   right: -10px;
 `;
 
-const CardsTemplate = () => {
+const Cards = ({ currentPlace, setCurrentPlace }) => {
+  const activeCard = useCurrentPlace(currentPlace);
+  const { id } = activeCard;
+
+  const cardPlaces = [];
+  cardPlaces.push(useCurrentPlace(currentPlace));
+  cardPlaces.push(...places.slice(id));
+  cardPlaces.push(...places.slice(0, id - 1));
+
+  // const cards = cardPlaces.map((el,i) => {
+  //   if(i > 0 && i <= 2) <Card side="left" />
+  // })
+
   return (
     <StyledWrapper>
       <Card side="left" tertiary />
@@ -39,10 +50,15 @@ const CardsTemplate = () => {
       <Card current />
       <Card side="right" secondary />
       <Card side="right" tertiary />
-      <LeftArrow direction="prev" />
-      <RightArrow direction="next" />
+      <LeftArrow direction="prev" onClick={() => setCurrentPlace(currentPlace - 1)} />
+      <RightArrow direction="next" onClick={() => setCurrentPlace(currentPlace + 1)} />
     </StyledWrapper>
   );
 };
 
-export default CardsTemplate;
+Cards.propTypes = {
+  currentPlace: PropTypes.number.isRequired,
+  setCurrentPlace: PropTypes.func.isRequired,
+};
+
+export default Cards;
