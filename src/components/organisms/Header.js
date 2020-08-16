@@ -14,6 +14,7 @@ const StyledWrapper = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 0 100px;
+  z-index: 100;
 `;
 
 const StyledList = styled.ul`

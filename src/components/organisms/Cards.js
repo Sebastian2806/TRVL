@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Card from '../molecules/Card';
 import Arrow from '../atoms/Arrow/Arrow';
 import { places } from '../../util/places';
@@ -31,28 +32,36 @@ const RightArrow = styled(StyledArrow)`
 `;
 
 const Cards = ({ currentPlace, setCurrentPlace }) => {
+  const changeCurrentPlace = (current) => {
+    let newCurrentPlace = current <= 0 ? places.length : current;
+    if (current > places.length) newCurrentPlace = 1;
+    setCurrentPlace(newCurrentPlace);
+  };
+
   const activeCard = useCurrentPlace(currentPlace);
   const { id } = activeCard;
 
   const cardPlaces = [];
-  cardPlaces.push(useCurrentPlace(currentPlace));
-  cardPlaces.push(...places.slice(id));
-  cardPlaces.push(...places.slice(0, id - 1));
+  cardPlaces.push(activeCard, ...places.slice(id), ...places.slice(0, id - 1));
 
-  // const cards = cardPlaces.map((el,i) => {
-  //   if(i > 0 && i <= 2) <Card side="left" />
-  // })
+  cardPlaces[0] = { ...cardPlaces[0], side: 'center' };
+  cardPlaces[1] = { ...cardPlaces[1], side: 'right', secondary: true };
+  cardPlaces[2] = { ...cardPlaces[2], side: 'right', tertiary: true };
+  cardPlaces[3] = { ...cardPlaces[3], side: 'left', tertiary: true };
+  cardPlaces[4] = { ...cardPlaces[4], side: 'left', secondary: true };
+
+  const cardsElements = cardPlaces.map((place) => (
+    <CSSTransition in key={place.name} timeout={200} classNames="card">
+      <Card {...place} />
+    </CSSTransition>
+  ));
 
   return (
-    <StyledWrapper>
-      <Card side="left" tertiary />
-      <Card side="left" secondary />
-      <Card current />
-      <Card side="right" secondary />
-      <Card side="right" tertiary />
-      <LeftArrow direction="prev" onClick={() => setCurrentPlace(currentPlace - 1)} />
-      <RightArrow direction="next" onClick={() => setCurrentPlace(currentPlace + 1)} />
-    </StyledWrapper>
+    <TransitionGroup component={StyledWrapper}>
+      {cardsElements}
+      <LeftArrow direction="prev" onClick={() => changeCurrentPlace(currentPlace - 1)} />
+      <RightArrow direction="next" onClick={() => changeCurrentPlace(currentPlace + 1)} />
+    </TransitionGroup>
   );
 };
 

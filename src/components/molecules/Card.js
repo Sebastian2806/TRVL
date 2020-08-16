@@ -1,14 +1,13 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-import LakeBled from '../../assets/img/Lake Bled.jpg';
 import Paragraph from '../atoms/Paragraph/Paragraph';
 import MapPin from '../../assets/icons/map-pin.svg';
 
 const StyledWrapper = styled.div`
   width: 260px;
   height: 500px;
-  background: url("${LakeBled}") no-repeat center;
+  background: url(${({ img }) => `"${img}"`}) no-repeat center;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -42,7 +41,6 @@ const StyledWrapper = styled.div`
       opacity: 0.6;
       z-index: 8;
     `}
-
 `;
 
 const StyledTitleWrapper = styled.div`
@@ -66,18 +64,18 @@ const StyledLocalizationName = styled(Paragraph)`
   margin-left: 10px;
 `;
 
-const Card = ({ current, side, ...props }) => {
+const Card = ({ side, name, localization, src: { jpg }, ...props }) => {
   return (
-    <StyledWrapper side={side} {...props}>
-      {current && (
+    <StyledWrapper img={jpg} side={side} {...props}>
+      {side === 'center' && (
         <StyledTitleWrapper>
           <Paragraph as="h2" uppercase="true" fontSize="xl">
-            Lake bled
+            {name}
           </Paragraph>
           <StyledLine />
           <StyledLocalizationWrapper>
             <img src={MapPin} alt="Map pin" />
-            <StyledLocalizationName>Slovenia</StyledLocalizationName>
+            <StyledLocalizationName>{localization}</StyledLocalizationName>
           </StyledLocalizationWrapper>
         </StyledTitleWrapper>
       )}
@@ -86,13 +84,12 @@ const Card = ({ current, side, ...props }) => {
 };
 
 Card.propTypes = {
-  current: PropTypes.bool,
-  side: PropTypes.string,
-};
-
-Card.defaultProps = {
-  current: false,
-  side: 'left',
+  side: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  localization: PropTypes.string.isRequired,
+  src: PropTypes.shape({
+    jpg: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default Card;
