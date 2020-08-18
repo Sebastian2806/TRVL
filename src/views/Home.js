@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import HeaderTemplate from '../components/templates/HeaderTemplate';
-import Cards from '../components/organisms/Cards';
-import { useCurrentPlace } from '../hooks/useCurrentPlace';
+import Slider from '../components/organisms/Slider';
+// import { useCurrentPlace } from '../hooks/useCurrentPlace';
+import { places } from '../util/places';
 
 const StyledFullWindow = styled.div`
   position: absolute;
@@ -21,15 +22,16 @@ const StyledBackground = styled(StyledFullWindow)`
 `;
 
 const Home = () => {
-  const [currentPlace, setCurrentPlace] = useState(3);
+  const [cardsDirection, setCardsDirection] = useState([0, 1, 2, 3, 4]);
 
-  const img = useCurrentPlace(currentPlace).src.jpg;
+  // const img = useCurrentPlace(currentPlace).src.jpg;
 
   return (
     <HeaderTemplate>
-      <StyledBackground img={`${img}`} />
+      <StyledBackground img={`${places[2].src.jpg}`} />
       <StyledFullWindow />
-      <Cards currentPlace={currentPlace} setCurrentPlace={setCurrentPlace} />
+      <Slider cardsDirection={cardsDirection} setCardsDirection={setCardsDirection} />
+      {/* <Cards currentPlace={currentPlace} setCurrentPlace={setCurrentPlace} /> */}
     </HeaderTemplate>
   );
 };
