@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 import Title from '../atoms/Title/Title';
-import Paragraph from '../atoms/Paragraph/Paragraph';
+import menuIcon from '../../assets/icons/menu.svg';
 
 const StyledWrapper = styled.header`
   top: 0;
@@ -17,30 +16,35 @@ const StyledWrapper = styled.header`
   z-index: 100;
 `;
 
-const StyledList = styled.ul`
-  display: flex;
-  list-style: none;
-  margin: 0;
+const StyledMenuIcon = styled.img`
+  cursor: pointer;
 `;
 
-const StyledListItem = styled.li`
-  margin-left: 57px;
-`;
+// const StyledList = styled.ul`
+//   display: flex;
+//   list-style: none;
+//   margin: 0;
+// `;
 
-const StyledLink = styled(Paragraph)`
-  text-decoration: none;
+// const StyledListItem = styled.li`
+//   margin-left: 57px;
+// `;
 
-  &.active {
-    font-weight: ${({ theme }) => theme.weight.bold};
-    border-bottom: 3px solid ${({ theme }) => theme.yellow};
-  }
-`;
+// const StyledLink = styled(Paragraph)`
+//   text-decoration: none;
+
+//   &.active {
+//     font-weight: ${({ theme }) => theme.weight.bold};
+//     border-bottom: 3px solid ${({ theme }) => theme.yellow};
+//   }
+// `;
 
 const Header = () => {
   return (
     <StyledWrapper>
       <Title>TRVL</Title>
-      <nav>
+      <StyledMenuIcon src={menuIcon} alt="Menu icon" />
+      {/* <nav>
         <StyledList>
           <StyledListItem>
             <StyledLink exact as={NavLink} to="/" uppercase="true" activeClassName="active">
@@ -58,7 +62,7 @@ const Header = () => {
             </StyledLink>
           </StyledListItem>
         </StyledList>
-      </nav>
+      </nav> */}
     </StyledWrapper>
   );
 };
