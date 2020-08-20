@@ -19,7 +19,7 @@ const Root = () => {
   }, []);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={window.location.pathname || ''}>
       <MainTemplate>
         <Switch>
           <Route exact path="/" component={Home} />
