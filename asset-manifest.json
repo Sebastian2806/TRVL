@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.js": "/TRVL/static/js/main.48c66940.chunk.js",
+    "main.js.map": "/TRVL/static/js/main.48c66940.chunk.js.map",
+    "runtime-main.js": "/TRVL/static/js/runtime-main.44679bac.js",
+    "runtime-main.js.map": "/TRVL/static/js/runtime-main.44679bac.js.map",
+    "static/js/2.6fb5f20b.chunk.js": "/TRVL/static/js/2.6fb5f20b.chunk.js",
+    "static/js/2.6fb5f20b.chunk.js.map": "/TRVL/static/js/2.6fb5f20b.chunk.js.map",
+    "index.html": "/TRVL/index.html",
+    "precache-manifest.b0a03dd77f4affc86751596a7d77c03d.js": "/TRVL/precache-manifest.b0a03dd77f4affc86751596a7d77c03d.js",
+    "service-worker.js": "/TRVL/service-worker.js",
+    "static/js/2.6fb5f20b.chunk.js.LICENSE.txt": "/TRVL/static/js/2.6fb5f20b.chunk.js.LICENSE.txt",
+    "static/media/arrow-left.svg": "/TRVL/static/media/arrow-left.218d7771.svg",
+    "static/media/arrow-right.svg": "/TRVL/static/media/arrow-right.14d16427.svg",
+    "static/media/back-menu-img.webp": "/TRVL/static/media/back-menu-img.6ebbd6ff.webp",
+    "static/media/back-menu-img.jpg": "/TRVL/static/media/back-menu-img.d372ecca.jpg",
+    "static/media/close-btn.svg": "/TRVL/static/media/close-btn.a846ae37.svg",
+    "static/media/grand_canyon.webp": "/TRVL/static/media/grand_canyon.1656d466.webp",
+    "static/media/grand_canyon.jpg": "/TRVL/static/media/grand_canyon.468a854d.jpg",
+    "static/media/great_barrier_reef.jpg": "/TRVL/static/media/great_barrier_reef.67cb0553.jpg",
+    "static/media/great_barrier_reef.webp": "/TRVL/static/media/great_barrier_reef.b7152176.webp",
+    "static/media/lake_bled.jpg": "/TRVL/static/media/lake_bled.304e4050.jpg",
+    "static/media/lake_bled.webp": "/TRVL/static/media/lake_bled.c944591b.webp",
+    "static/media/map-pin.svg": "/TRVL/static/media/map-pin.44869c6d.svg",
+    "static/media/menu.svg": "/TRVL/static/media/menu.100229fc.svg",
+    "static/media/moraine_lake.jpg": "/TRVL/static/media/moraine_lake.4b59c8a7.jpg",
+    "static/media/moraine_lake.webp": "/TRVL/static/media/moraine_lake.afb20ba1.webp",
+    "static/media/niagara_falls.jpg": "/TRVL/static/media/niagara_falls.6cb14263.jpg",
+    "static/media/niagara_falls.webp": "/TRVL/static/media/niagara_falls.e11b3535.webp",
+    "static/media/top-menu-img.webp": "/TRVL/static/media/top-menu-img.0b97371e.webp",
+    "static/media/top-menu-img.jpg": "/TRVL/static/media/top-menu-img.7d5feab4.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.44679bac.js",
+    "static/js/2.6fb5f20b.chunk.js",
+    "static/js/main.48c66940.chunk.js"
+  ]
+}
