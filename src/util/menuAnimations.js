@@ -5,6 +5,7 @@ export const openMenu = (menu, menuBackground, menuList) => {
   const liArr = [...menuList.current.children];
 
   const backgrounds = liArr.map((el) => [...el.children][0]);
+  const paragraphs = liArr.map((el) => [...el.children][1]);
 
   tl.to([menu, menuBackground], {
     duration: 0,
@@ -25,6 +26,19 @@ export const openMenu = (menu, menuBackground, menuList) => {
       delay: -0.3,
       duration: 0.7,
       ease: 'power3.inOut',
+      scaleX: 1,
+      transformOrigin: 'left',
+      stagger: {
+        amount: 0.06,
+      },
+    })
+    .to([...paragraphs], {
+      duration: 0,
+      autoAlpha: 1,
+    })
+    .to([...backgrounds], {
+      duration: 0.7,
+      ease: 'power3.inOut',
       scaleX: 0,
       transformOrigin: 'right',
       stagger: {
@@ -37,6 +51,7 @@ export const closeMenu = (menu, menuBackground, menuList) => {
   const liArr = [...menuList.current.children];
 
   const backgrounds = liArr.map((el) => [...el.children][0]);
+  const paragraphs = liArr.map((el) => [...el.children][1]);
 
   gsap.to([menu, menuBackground], {
     ease: 'power3.inOut',
@@ -50,6 +65,12 @@ export const closeMenu = (menu, menuBackground, menuList) => {
   gsap.to([...backgrounds], {
     duration: 0,
     delay: 1,
-    scaleX: 1,
+    scaleX: 0,
+  });
+
+  gsap.to([...paragraphs], {
+    duration: 0,
+    delay: 1,
+    autoAlpha: 0,
   });
 };

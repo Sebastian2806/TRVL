@@ -2,11 +2,13 @@
   "name": "trvl",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://sebastian2806.github.io/TRVL",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "eslint": "^6.6.0",
+    "gh-pages": "^3.1.0",
     "gsap": "^3.5.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
@@ -17,7 +19,6 @@
     "react-image-webp": "^0.7.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "react-transition-group": "^4.4.1",
     "styled-components": "^5.1.1"
   },
   "scripts": {
@@ -25,8 +26,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [

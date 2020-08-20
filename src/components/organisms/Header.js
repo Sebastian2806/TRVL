@@ -58,7 +58,7 @@ const Header = () => {
     setDisabled(true);
     setTimeout(() => {
       setDisabled(false);
-    }, 1500);
+    }, 2000);
   };
 
   const handleClick = () => {

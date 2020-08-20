@@ -59,6 +59,8 @@ const StyledParagraph = styled(Paragraph)`
   cursor: pointer;
   font-size: ${({ theme }) => theme.fonts.xxl};
   position: relative;
+  opacity: 0;
+  visibility: hidden;
 
   @media (max-width: 315px) {
     font-size: ${({ theme }) => `calc(${theme.fonts.xl} + 2rem)`};
@@ -107,6 +109,7 @@ const StyledParagraphCover = styled.div`
   height: 100%;
   z-index: 90;
   background-color: ${({ theme }) => theme.dark};
+  transform: scaleX(0);
 `;
 
 const MenuItems = ({ menuItems }) => {
