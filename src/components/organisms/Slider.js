@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 import Card from '../molecules/Card';
 import Arrow from '../atoms/Arrow/Arrow';
 import { places } from '../../util/places';
@@ -12,6 +13,7 @@ import {
 } from '../../util/sliderAnimations';
 
 const StyledWrapper = styled.main`
+  overflow: hidden;
   margin: 0 auto;
   position: relative;
   max-width: 1200px;
@@ -29,16 +31,29 @@ const StyledImagesWrapper = styled.div`
 
 const StyledArrow = styled(Arrow)`
   position: absolute;
-  z-index: 100;
-  top: calc(100% / 2 + 40px);
+  z-index: 50;
+
+  @media (min-width: 600px) {
+    top: calc(100% / 2 + 40px);
+  }
 `;
 
 const LeftArrow = styled(StyledArrow)`
-  left: -10px;
+  left: 20px;
+  bottom: 20px;
+
+  @media (min-width: 600px) {
+    left: 0;
+  }
 `;
 
 const RightArrow = styled(StyledArrow)`
-  right: -10px;
+  right: 20px;
+  bottom: 20px;
+
+  @media (min-width: 600px) {
+    right: 0;
+  }
 `;
 
 const Slider = ({ cardsDirection, setCardsDirection }) => {
@@ -49,7 +64,7 @@ const Slider = ({ cardsDirection, setCardsDirection }) => {
     const placesDirectionCopy = [...cardsDirection];
     const lastEl = placesDirectionCopy.pop();
     placesDirectionCopy.unshift(lastEl);
-    setCardsDirection(placesDirectionCopy);
+
     changeCard(images.current[placesDirectionCopy[0]], -480, 0.6, 6, 0.85, { rotationY: 30 });
     changeCard(images.current[placesDirectionCopy[1]], -250, 0.8, 8, 0.9, { rotationY: 30 });
     changeCard(images.current[placesDirectionCopy[2]], 0, 1, 10, 1, { rotationY: 0 });
@@ -60,6 +75,8 @@ const Slider = ({ cardsDirection, setCardsDirection }) => {
       [...images.current[cardsDirection[2]].children][0],
       [...images.current[cardsDirection[1]].children][0],
     );
+
+    setTimeout(() => setCardsDirection(placesDirectionCopy), 1800);
   };
 
   const previousPlace = () => {
@@ -77,6 +94,8 @@ const Slider = ({ cardsDirection, setCardsDirection }) => {
       [...images.current[cardsDirection[2]].children][0],
       [...images.current[cardsDirection[3]].children][0],
     );
+
+    setTimeout(() => setCardsDirection(placesDirectionCopy), 1800);
   };
 
   useEffect(() => {
@@ -95,8 +114,8 @@ const Slider = ({ cardsDirection, setCardsDirection }) => {
         <Card {...places[3]} />
         <Card {...places[4]} />
       </StyledImagesWrapper>
-      <LeftArrow direction="prev" onClick={() => previousPlace()} />
-      <RightArrow direction="next" onClick={() => nextPlace()} />
+      <LeftArrow direction="prev" onClick={_.throttle(previousPlace, 1800, { trailing: false })} />
+      <RightArrow direction="next" onClick={_.throttle(nextPlace, 1800, { trailing: false })} />
     </StyledWrapper>
   );
 };

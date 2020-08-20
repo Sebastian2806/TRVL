@@ -13,7 +13,7 @@ const StyledFullWindow = styled.div`
   width: 100%;
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
-  backdrop-filter: blur(2px) opacity(70%);
+  /* backdrop-filter: blur(2px) opacity(70%); */
 `;
 
 const StyledBackground = styled(StyledFullWindow)`

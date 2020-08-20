@@ -1,7 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import styled, { css } from 'styled-components';
 import Title from '../atoms/Title/Title';
 import menuIcon from '../../assets/icons/menu.svg';
+import closeIcon from '../../assets/icons/close-btn.svg';
+import Menu from './Menu';
 
 const StyledWrapper = styled.header`
   top: 0;
@@ -12,57 +14,68 @@ const StyledWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 100px;
+  padding: 0 20px;
   z-index: 100;
+
+  @media (min-width: 768px) {
+    padding: 0 50px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 0 100px;
+  }
 `;
 
-const StyledMenuIcon = styled.img`
+const StyledMenuIconBtn = styled.button`
+  z-index: 200;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  height: 32px;
+  width: 32px;
   cursor: pointer;
 `;
 
-// const StyledList = styled.ul`
-//   display: flex;
-//   list-style: none;
-//   margin: 0;
-// `;
-
-// const StyledListItem = styled.li`
-//   margin-left: 57px;
-// `;
-
-// const StyledLink = styled(Paragraph)`
-//   text-decoration: none;
-
-//   &.active {
-//     font-weight: ${({ theme }) => theme.weight.bold};
-//     border-bottom: 3px solid ${({ theme }) => theme.yellow};
-//   }
-// `;
+const StyledTitle = styled(Title)`
+  z-index: 200;
+  ${({ isOpen }) =>
+    isOpen &&
+    css`
+      color: ${({ theme }) => theme.dark};
+    `}
+`;
 
 const Header = () => {
+  const [menuSettings, setMenuSettings] = useState({
+    isOpen: false,
+    init: true,
+  });
+
+  const [disabled, setDisabled] = useState(false);
+
+  const disabledMenu = () => {
+    setDisabled(true);
+    setTimeout(() => {
+      setDisabled(false);
+    }, 1500);
+  };
+
+  const handleClick = () => {
+    disabledMenu();
+    setMenuSettings({
+      isOpen: !menuSettings.isOpen,
+      init: false,
+    });
+  };
+
   return (
     <StyledWrapper>
-      <Title>TRVL</Title>
-      <StyledMenuIcon src={menuIcon} alt="Menu icon" />
-      {/* <nav>
-        <StyledList>
-          <StyledListItem>
-            <StyledLink exact as={NavLink} to="/" uppercase="true" activeClassName="active">
-              home
-            </StyledLink>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledLink as={NavLink} to="/destinations" uppercase="true" activeClassName="active">
-              destinations
-            </StyledLink>
-          </StyledListItem>
-          <StyledListItem>
-            <StyledLink as={NavLink} to="/contact" uppercase="true" activeClassName="active">
-              contact
-            </StyledLink>
-          </StyledListItem>
-        </StyledList>
-      </nav> */}
+      <StyledTitle isOpen={menuSettings.isOpen}>TRVL</StyledTitle>
+      <StyledMenuIconBtn disabled={disabled} onClick={handleClick}>
+        <img src={menuSettings.isOpen ? closeIcon : menuIcon} alt="Menu icon" />
+      </StyledMenuIconBtn>
+      <Menu menuSettings={menuSettings} />
     </StyledWrapper>
   );
 };
