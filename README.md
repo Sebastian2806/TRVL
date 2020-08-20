@@ -23,7 +23,7 @@ I planning to do:
 - [ ] a timer that automatically changing the currently active/center card
 
 If you want to see demo you can click the link below:
-https://sebastian2806.github.io/frontend_utp/
+https://sebastian2806.github.io/TRVL/
 
 If you want to see the project designed in Figma you can click the link below:
 https://www.figma.com/file/yyKpN74Oocgh9BpjpMp5rr/TRVL?node-id=0%3A1
