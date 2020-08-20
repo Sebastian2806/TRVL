@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/TRVL/static/js/main.de793d6a.chunk.js",
-    "main.js.map": "/TRVL/static/js/main.de793d6a.chunk.js.map",
+    "main.js": "/TRVL/static/js/main.c618946b.chunk.js",
+    "main.js.map": "/TRVL/static/js/main.c618946b.chunk.js.map",
     "runtime-main.js": "/TRVL/static/js/runtime-main.44679bac.js",
     "runtime-main.js.map": "/TRVL/static/js/runtime-main.44679bac.js.map",
     "static/js/2.6fb5f20b.chunk.js": "/TRVL/static/js/2.6fb5f20b.chunk.js",
     "static/js/2.6fb5f20b.chunk.js.map": "/TRVL/static/js/2.6fb5f20b.chunk.js.map",
     "index.html": "/TRVL/index.html",
-    "precache-manifest.cbbe14cffc82b5b88c658085004bc659.js": "/TRVL/precache-manifest.cbbe14cffc82b5b88c658085004bc659.js",
+    "precache-manifest.35b6f84ee3d08894de75f83e63d4db92.js": "/TRVL/precache-manifest.35b6f84ee3d08894de75f83e63d4db92.js",
     "service-worker.js": "/TRVL/service-worker.js",
     "static/js/2.6fb5f20b.chunk.js.LICENSE.txt": "/TRVL/static/js/2.6fb5f20b.chunk.js.LICENSE.txt",
     "static/media/arrow-left.svg": "/TRVL/static/media/arrow-left.218d7771.svg",
@@ -33,6 +33,6 @@
   "entrypoints": [
     "static/js/runtime-main.44679bac.js",
     "static/js/2.6fb5f20b.chunk.js",
-    "static/js/main.de793d6a.chunk.js"
+    "static/js/main.c618946b.chunk.js"
   ]
 }

@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "58396f22fe13c70b7c6390fec57d646a",
+    "revision": "db697ccd261ffb2d7cb63150123ffd13",
     "url": "/TRVL/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/TRVL/static/js/2.6fb5f20b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f6e58f92179e2a9b6c71",
-    "url": "/TRVL/static/js/main.de793d6a.chunk.js"
+    "revision": "cd16b607389ecb484a29",
+    "url": "/TRVL/static/js/main.c618946b.chunk.js"
   },
   {
     "revision": "febc6868f14b19c49baf",
