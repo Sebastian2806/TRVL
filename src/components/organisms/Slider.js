@@ -1,128 +1,59 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
 import Card from '../molecules/Card';
 import Arrow from '../atoms/Arrow/Arrow';
 import { places } from '../../util/places';
-import {
-  initCardsPosition,
-  initCardsDescriptionPosition,
-  changeCard,
-  changeCardDescription,
-} from '../../util/sliderAnimations';
+import SliderContext from '../../context/SliderContext';
 
-const StyledWrapper = styled.main`
+const StyledWrapper = styled.div`
+  position: relative;
+  width: 1400px;
+  height: 550px;
   overflow: hidden;
-  margin: 0 auto;
-  position: relative;
-  max-width: 1200px;
-  width: 100%;
-  height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
-  padding-top: 80px;
+  perspective: 2000px;
 `;
 
-const StyledImagesWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-`;
+const CardItem = ({ cardNumber }) => {
+  const { cardsDirection } = useContext(SliderContext);
+  const cardPlace = places.find((el) => el.id === cardNumber);
+  const pos = cardsDirection.findIndex((card) => card === cardPlace.id);
 
-const StyledArrow = styled(Arrow)`
-  position: absolute;
-  z-index: 50;
+  return <Card {...cardPlace} pos={pos} />;
+};
 
-  @media (min-width: 600px) {
-    top: calc(100% / 2 + 40px);
-  }
-`;
+const Button = ({ direction }) => {
+  const { changeCardsDirection } = useContext(SliderContext);
+  return <Arrow direction={direction} onClick={() => changeCardsDirection(direction)} />;
+};
 
-const LeftArrow = styled(StyledArrow)`
-  left: 20px;
-  bottom: 20px;
+const Wrapper = ({ children }) => {
+  const [cardsDirection, setCardsDirection] = useState([0, 1, 2, 3, 4]);
 
-  @media (min-width: 600px) {
-    left: 0;
-  }
-`;
-
-const RightArrow = styled(StyledArrow)`
-  right: 20px;
-  bottom: 20px;
-
-  @media (min-width: 600px) {
-    right: 0;
-  }
-`;
-
-const Slider = ({ cardsDirection, setCardsDirection }) => {
-  const slider = useRef(null);
-  const images = useRef([]);
-
-  const nextPlace = () => {
-    const placesDirectionCopy = [...cardsDirection];
-    const lastEl = placesDirectionCopy.pop();
-    placesDirectionCopy.unshift(lastEl);
-
-    changeCard(images.current[placesDirectionCopy[0]], -480, 0.6, 6, 0.85, { rotationY: 30 });
-    changeCard(images.current[placesDirectionCopy[1]], -250, 0.8, 8, 0.9, { rotationY: 30 });
-    changeCard(images.current[placesDirectionCopy[2]], 0, 1, 10, 1, { rotationY: 0 });
-    changeCard(images.current[placesDirectionCopy[3]], 250, 0.8, 8, 0.9);
-    changeCard(images.current[placesDirectionCopy[4]], 480, 0.6, 6, 0.85);
-
-    changeCardDescription(
-      [...images.current[cardsDirection[2]].children][0],
-      [...images.current[cardsDirection[1]].children][0],
-    );
-
-    setTimeout(() => setCardsDirection(placesDirectionCopy), 1800);
+  const changeCardsDirection = (direction) => {
+    const cardsDirectionCopy = cardsDirection;
+    const centerElements = cardsDirectionCopy.splice(1, 3);
+    if (direction === 'prev') setCardsDirection([...centerElements, ...cardsDirectionCopy.reverse()]);
+    else setCardsDirection([...cardsDirectionCopy.reverse(), ...centerElements]);
   };
-
-  const previousPlace = () => {
-    const placesDirectionCopy = [...cardsDirection];
-    const lastEl = placesDirectionCopy.shift();
-    placesDirectionCopy.push(lastEl);
-    setCardsDirection(placesDirectionCopy);
-    changeCard(images.current[placesDirectionCopy[4]], 480, 0.6, 6, 0.85);
-    changeCard(images.current[placesDirectionCopy[3]], 250, 0.8, 8, 0.9);
-    changeCard(images.current[placesDirectionCopy[2]], 0, 1, 10, 1, { rotationY: 0 });
-    changeCard(images.current[placesDirectionCopy[1]], -250, 0.8, 8, 0.9, { rotationY: 30 });
-    changeCard(images.current[placesDirectionCopy[0]], -480, 0.6, 6, 0.85, { rotationY: 30 });
-
-    changeCardDescription(
-      [...images.current[cardsDirection[2]].children][0],
-      [...images.current[cardsDirection[3]].children][0],
-    );
-
-    setTimeout(() => setCardsDirection(placesDirectionCopy), 1800);
-  };
-
-  useEffect(() => {
-    images.current = [...slider.current.children];
-
-    initCardsPosition(slider, images.current, cardsDirection);
-    initCardsDescriptionPosition(images.current, cardsDirection[2]);
-  }, []);
 
   return (
-    <StyledWrapper>
-      <StyledImagesWrapper ref={slider}>
-        <Card {...places[0]} />
-        <Card {...places[1]} />
-        <Card {...places[2]} />
-        <Card {...places[3]} />
-        <Card {...places[4]} />
-      </StyledImagesWrapper>
-      <LeftArrow direction="prev" onClick={_.throttle(previousPlace, 1800, { trailing: false })} />
-      <RightArrow direction="next" onClick={_.throttle(nextPlace, 1800, { trailing: false })} />
-    </StyledWrapper>
+    <SliderContext.Provider value={{ cardsDirection, changeCardsDirection }}>
+      <StyledWrapper>{children}</StyledWrapper>
+    </SliderContext.Provider>
   );
 };
 
-Slider.propTypes = {
-  cardsDirection: PropTypes.arrayOf(PropTypes.number).isRequired,
-  setCardsDirection: PropTypes.func.isRequired,
+Wrapper.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
 };
 
-export default Slider;
+Button.propTypes = {
+  direction: PropTypes.string.isRequired,
+};
+
+CardItem.propTypes = {
+  cardNumber: PropTypes.number.isRequired,
+};
+
+export { Wrapper, Button, CardItem };

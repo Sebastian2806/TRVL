@@ -5,8 +5,36 @@ import Paragraph from '../atoms/Paragraph/Paragraph';
 import MapPin from '../../assets/icons/map-pin.svg';
 
 const StyledWrapper = styled.div`
+  opacity: 0;
   flex-shrink: 0;
   z-index: 15;
+
+  &.desc-enter {
+    opacity: 0;
+    visibility: 'hidden';
+  }
+
+  &.desc-enter-active {
+    opacity: 1;
+    visibility: 'hidden';
+    transition: opacity 500ms 900ms ease-in-out;
+  }
+
+  &.desc-enter-done {
+    opacity: 1;
+    visibility: 'hidden';
+  }
+
+  &.desc-exit {
+    opacity: 1;
+    visibility: 'hidden';
+  }
+
+  &.desc-exit-active {
+    opacity: 0;
+    visibility: 'hidden';
+    transition: opacity 400ms ease-in-out;
+  }
 `;
 
 const StyledLine = styled.div`

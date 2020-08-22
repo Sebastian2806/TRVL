@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import HeaderTemplate from '../components/templates/HeaderTemplate';
-import Slider from '../components/organisms/Slider';
-// import { useCurrentPlace } from '../hooks/useCurrentPlace';
+import * as Slider from '../components/organisms/Slider';
 import { places } from '../util/places';
 
 const StyledFullWindow = styled.div`
@@ -16,22 +15,52 @@ const StyledFullWindow = styled.div`
   /* backdrop-filter: blur(2px) opacity(70%); */
 `;
 
+const StyledWrapper = styled.main`
+  width: 100%;
+  height: calc(100vh);
+  height: calc(var(--vh, 1vh) * 100);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledButtonsWrapper = styled.div`
+  z-index: 50;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+`;
+
 const StyledBackground = styled(StyledFullWindow)`
   background: url(${({ img }) => `'${img}'`}) no-repeat center;
   background-size: cover;
 `;
 
 const Home = () => {
-  const [cardsDirection, setCardsDirection] = useState([0, 1, 2, 3, 4]);
-
   // const img = useCurrentPlace(currentPlace).src.jpg;
 
   return (
     <HeaderTemplate>
       <StyledBackground img={`${places[2].src.jpg}`} />
       <StyledFullWindow />
-      <Slider cardsDirection={cardsDirection} setCardsDirection={setCardsDirection} />
-      {/* <Cards currentPlace={currentPlace} setCurrentPlace={setCurrentPlace} /> */}
+      <StyledWrapper>
+        <Slider.Wrapper>
+          <Slider.CardItem cardNumber={0} />
+          <Slider.CardItem cardNumber={1} />
+          <Slider.CardItem cardNumber={2} />
+          <Slider.CardItem cardNumber={3} />
+          <Slider.CardItem cardNumber={4} />
+          <StyledButtonsWrapper>
+            <Slider.Button direction="prev" />
+            <Slider.Button direction="next" />
+          </StyledButtonsWrapper>
+        </Slider.Wrapper>
+      </StyledWrapper>
     </HeaderTemplate>
   );
 };
