@@ -63,7 +63,7 @@ export const descriptionIn = (el) => {
     line,
     { scaleX: 0 },
     {
-      delay: 0.6,
+      delay: 0.9,
       duration: 0.4,
       scaleX: 1,
       transformOrigin: 'left',
@@ -102,66 +102,3 @@ export const descriptionOut = (el) => {
 //       });
 //   });
 // };
-
-export const changeCard = (el, x, opacity, zIndex, scale, { duration = 0.5, rotationY = -30 } = {}) => {
-  gsap.to(el, {
-    delay: 0.5,
-    duration,
-    opacity,
-    zIndex,
-    x,
-    scale,
-    rotationY,
-    ease: 'power1.inOut',
-  });
-};
-
-export const changeCardDescription = (currentEl, nextEl) => {
-  const currentElements = [...currentEl.children];
-  const nextElements = [...nextEl.children];
-
-  gsap.to([currentElements[0], currentElements[2]], {
-    y: -100,
-    ease: 'power4.out',
-    opacity: 0,
-    stagger: 0.2,
-  });
-
-  gsap.to(currentElements[1], 0.3, {
-    delay: 0.4,
-    scaleX: 0,
-    opacity: 0,
-    transformOrigin: 'right',
-  });
-
-  gsap.to([...currentElements], {
-    visibility: 'hidden',
-    delay: 0.7,
-  });
-
-  gsap.set([...nextElements], {
-    visibility: 'visible',
-  });
-
-  gsap.fromTo(
-    [nextElements[0], nextElements[2]],
-    { y: 100 },
-    {
-      delay: 0.7,
-      y: 0,
-      opacity: 1,
-      stagger: 0.2,
-    },
-  );
-
-  gsap.fromTo(
-    nextElements[1],
-    { scaleX: 0 },
-    {
-      delay: 1.1,
-      opacity: 1,
-      scaleX: 1,
-      transformOrigin: 'left',
-    },
-  );
-};

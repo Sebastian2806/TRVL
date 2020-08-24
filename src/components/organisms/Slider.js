@@ -23,22 +23,38 @@ const CardItem = ({ cardNumber }) => {
 };
 
 const Button = ({ direction }) => {
-  const { changeCardsDirection } = useContext(SliderContext);
-  return <Arrow direction={direction} onClick={() => changeCardsDirection(direction)} />;
+  const { changeCardsDirection, disabled } = useContext(SliderContext);
+  return <Arrow disabled={disabled} direction={direction} onClick={() => changeCardsDirection(direction)} />;
 };
 
 const Wrapper = ({ children }) => {
   const [cardsDirection, setCardsDirection] = useState([0, 1, 2, 3, 4]);
+  const [disabled, setDisabled] = useState(false);
+
+  const changeDisabled = () => {
+    setDisabled(true);
+    const time = setTimeout(() => {
+      setDisabled(false);
+      clearTimeout(time);
+    }, 1600);
+  };
 
   const changeCardsDirection = (direction) => {
-    const cardsDirectionCopy = cardsDirection;
+    changeDisabled();
+    let cardsArr = [];
+    const cardsDirectionCopy = [...cardsDirection];
     const centerElements = cardsDirectionCopy.splice(1, 3);
-    if (direction === 'prev') setCardsDirection([...centerElements, ...cardsDirectionCopy.reverse()]);
-    else setCardsDirection([...cardsDirectionCopy.reverse(), ...centerElements]);
+    if (direction === 'prev') {
+      cardsArr = [...centerElements, ...cardsDirectionCopy.reverse()];
+      setCardsDirection(cardsArr);
+    } else if (direction === 'next') {
+      cardsArr = [...cardsDirectionCopy.reverse(), ...centerElements];
+      setCardsDirection(cardsArr);
+    }
   };
 
   return (
-    <SliderContext.Provider value={{ cardsDirection, changeCardsDirection }}>
+    <SliderContext.Provider value={{ cardsDirection, changeCardsDirection, disabled }}>
       <StyledWrapper>{children}</StyledWrapper>
     </SliderContext.Provider>
   );
