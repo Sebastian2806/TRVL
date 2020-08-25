@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import Title from '../atoms/Title/Title';
 import menuIcon from '../../assets/icons/menu.svg';
-import closeIcon from '../../assets/icons/close-btn.svg';
+// import closeIcon from '../../assets/icons/close-btn.svg';
 import Menu from './Menu';
 
 const StyledWrapper = styled.header`
@@ -14,14 +14,14 @@ const StyledWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
-  z-index: 100;
+  padding: 0 30px;
+  z-index: 150;
 
   @media (min-width: 768px) {
     padding: 0 50px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1140px) {
     padding: 0 100px;
   }
 `;
@@ -39,17 +39,12 @@ const StyledMenuIconBtn = styled.button`
 
 const StyledTitle = styled(Title)`
   z-index: 200;
-  ${({ isOpen }) =>
-    isOpen &&
-    css`
-      color: ${({ theme }) => theme.dark};
-    `}
 `;
 
 const Header = () => {
   const [menuSettings, setMenuSettings] = useState({
     isOpen: false,
-    init: true,
+    init: false,
   });
 
   const [disabled, setDisabled] = useState(false);
@@ -73,7 +68,8 @@ const Header = () => {
     <StyledWrapper>
       <StyledTitle isOpen={menuSettings.isOpen}>TRVL</StyledTitle>
       <StyledMenuIconBtn disabled={disabled} onClick={handleClick}>
-        <img src={menuSettings.isOpen ? closeIcon : menuIcon} alt="Menu icon" />
+        {/* <img src={menuSettings.isOpen ? closeIcon : menuIcon} alt="Menu icon" /> */}
+        <img src={menuIcon} alt="Menu icon" />
       </StyledMenuIconBtn>
       <Menu menuSettings={menuSettings} />
     </StyledWrapper>

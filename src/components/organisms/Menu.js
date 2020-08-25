@@ -1,172 +1,317 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { gsap } from 'gsap';
+import { NavLink } from 'react-router-dom';
 import { openMenu, closeMenu } from '../../util/menuAnimations';
-import MenuItems from '../molecules/MenuItems';
-import topMenuImgJpg from '../../assets/img/jpg/top-menu-img.jpg';
-import backMenuImgJpg from '../../assets/img/jpg/back-menu-img.jpg';
-import topMenuImgWebp from '../../assets/img/webp/top-menu-img.webp';
-import backMenuImgWebp from '../../assets/img/webp/back-menu-img.webp';
+import germanyJpg from '../../assets/img/jpg/germany.jpg';
+import norwayJpg from '../../assets/img/jpg/norway.jpg';
+import germanyWebp from '../../assets/img/webp/germany.webp';
+import norwayWebp from '../../assets/img/webp/norway.webp';
+import Paragraph from '../atoms/Paragraph/Paragraph';
 
 const StyledMenuWrapper = styled.div`
+  position: absolute;
+  display: block;
+`;
+
+const StyledMenu = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  display: none;
-  z-index: 78;
-  width: 100%;
-  height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
-  overflow: hidden;
-`;
-
-const StyledWrapper = styled.div`
-  transform: translateY(-100%);
-  position: absolute;
-  top: 0;
-  left: 0;
+  z-index: 100;
   display: flex;
-  justify-content: flex-start;
   width: 100%;
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
-  padding-top: 80px;
   overflow: hidden;
-  z-index: 80;
-  background: ${({ theme }) => theme.light};
-  color: ${({ theme }) => theme.dark};
-
-  @media (min-height: 800px) and (max-width: 650px), (min-width: 700px) {
-    justify-content: center;
-  }
-`;
-
-const StyledBackground = styled.div`
-  position: absolute;
-  transform: translateY(-100%);
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
-  background: ${({ theme }) => theme.dark};
-  overflow: hidden;
-  z-index: -1;
-`;
-
-const StyledWrapperContainer = styled.div`
-  display: flex;
-`;
-
-const StyledImagesWrapper = styled.div`
-  display: none;
-  position: relative;
-  width: 50%;
-  align-items: center;
-
-  @media (min-width: 700px) and (min-height: 700px) {
-    display: flex;
-  }
-`;
-
-const StyledContainer = styled.div`
-  position: relative;
-  width: 300px;
-  height: 550px;
-
-  @media (min-width: 1024px) and (min-height: 850px) {
-    width: 500px;
-    height: 800px;
-  }
-`;
-
-const StyledRect = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 45%;
-  transform: translate(-50%, -50%);
-  z-index: 81;
-  width: 190px;
-  height: 260px;
   background: ${({ theme }) => theme.yellow};
 
-  @media (min-width: 1024px) and (min-height: 850px) {
-    width: 260px;
-    height: 460px;
+  transform: translateY(-100%);
+  transform-origin: top right;
+`;
+
+const StyledMenuBackground = styled(StyledMenu)`
+  z-index: 99;
+  background: ${({ theme }) => theme.dark};
+`;
+
+const StyledSection = styled.section`
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    width: 50%;
+  }
+
+  @media (min-width: 1024px) {
+    width: 33%;
   }
 `;
 
-const StyledTopImg = styled.img`
+const StyledNavigation = styled.nav`
+  margin: -20px 0 0 30px;
+
+  @media (min-width: 768px) {
+    margin-left: 50px;
+  }
+
+  @media (min-width: 1140px) {
+    margin-left: 100px;
+  }
+`;
+
+const StyledList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-rows: repeat(5, 50px);
+  grid-gap: 10px;
+
+  @media (min-width: 300px) {
+    grid-gap: 20px;
+  }
+`;
+
+const StyledLink = styled(Paragraph)`
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-weight: ${({ theme }) => theme.weight.bold};
+  font-size: ${({ theme }) => theme.fonts.l};
+
+  @media (min-width: 300px) {
+    font-size: ${({ theme }) => theme.fonts.xl};
+  }
+`;
+
+const StyledContact = styled(Paragraph)`
+  padding-top: 80px;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  letter-spacing: 1px;
+  font-size: ${({ theme }) => theme.fonts.m};
+
+  @media (min-width: 768px) {
+    left: 50px;
+    bottom: 50px;
+  }
+
+  @media (min-width: 1140px) {
+    left: 100px;
+    bottom: 50px;
+  }
+`;
+
+const StyledRightSection = styled(StyledSection)`
+  flex-grow: 1;
+  background: ${({ theme }) => theme.dark};
+  display: none;
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+const StyledBox = styled.div`
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: 1440px) {
+    justify-content: flex-start;
+  }
+`;
+
+const StyledFigure = styled.figure`
+  margin: 0;
+  color: ${({ theme }) => theme.light};
+  width: 70%;
+  max-width: 600px;
+
+  & > blockquote {
+    margin: 0;
+    overflow: hidden;
+  }
+
+  @media (min-width: 1440px) {
+    margin-left: 180px;
+  }
+`;
+
+const StyledParagraphQuote = styled(Paragraph)`
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: ${({ theme }) => theme.fonts.xl};
+`;
+
+const StyledQuoteFooter = styled.footer`
+  margin-top: 20px;
+  color: ${({ theme }) => theme.yellow};
+  font-size: ${({ theme }) => theme.fonts.m};
+
+  & > cite {
+    margin-left: 10px;
+    font-style: normal;
+  }
+`;
+
+const StyledImagesBox = styled(StyledBox)`
+  flex-direction: column;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+  }
+`;
+
+const StyledPicture = styled.picture`
+  position: relative;
+  height: 50%;
+  width: 100%;
+  display: block;
+  overflow: hidden;
+
+  @media (min-width: 1024px) {
+    height: 100%;
+    width: 50%;
+  }
+`;
+
+const StyledImg = styled.img`
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: fill;
+`;
+
+const StyledImageLayer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 82;
-  width: 190px;
+  height: 100%;
+  width: 100%;
+  z-index: 101;
+  background: ${({ theme }) => theme.yellow};
 
-  @media (min-width: 1024px) and (min-height: 850px) {
-    width: 290px;
-  }
-`;
-
-const StyledBackImg = styled.img`
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 83;
-  width: 240px;
-
-  @media (min-width: 1024px) and (min-height: 850px) {
-    width: 370px;
-  }
+  transform: scaleX(0);
+  transform-origin: top left;
 `;
 
 const Menu = ({ menuSettings: { isOpen, init } }) => {
   const menuWrapper = useRef(null);
   const menu = useRef(null);
   const menuBackground = useRef(null);
-  const menuItems = useRef(null);
+  const menuList = useRef(null);
+  const menuImages = useRef([]);
+  const menuLayers = useRef([]);
+  const menuQuote = useRef(null);
+  const menuQuoteAuthor = useRef(null);
 
   useEffect(() => {
     if (init) return;
-    if (isOpen) {
-      gsap.to(menuWrapper.current, {
-        duration: 0,
-        css: { display: 'block' },
-      });
-
-      openMenu(menu.current, menuBackground.current, menuItems);
-    } else {
-      gsap.to(menuWrapper.current, {
-        duration: 1,
-        css: { display: 'none' },
-      });
-
-      closeMenu(menu.current, menuBackground.current, menuItems);
-    }
+    if (isOpen)
+      openMenu(
+        menuWrapper.current,
+        menu.current,
+        menuBackground.current,
+        menuList.current,
+        menuQuote.current,
+        menuQuoteAuthor.current,
+        menuImages.current,
+        menuLayers.current,
+      );
+    else closeMenu(menuWrapper.current, menu.current, menuBackground.current);
   }, [isOpen, init]);
 
   return (
     <StyledMenuWrapper ref={menuWrapper}>
-      <StyledWrapper ref={menu}>
-        <StyledWrapperContainer>
-          <MenuItems menuItems={menuItems} />
-          <StyledImagesWrapper>
-            <StyledContainer>
-              <picture>
-                <source srcSet={backMenuImgWebp} type="image/webp" />
-                <StyledTopImg src={backMenuImgJpg} alt="Lake in Canada" />
-              </picture>
-              <picture>
-                <source srcSet={topMenuImgWebp} type="image/webp" />
-                <StyledBackImg src={topMenuImgJpg} alt="Nusapenida, Indonesia" />
-              </picture>
-              <StyledRect />
-            </StyledContainer>
-          </StyledImagesWrapper>
-        </StyledWrapperContainer>
-      </StyledWrapper>
-      <StyledBackground ref={menuBackground} />
+      <StyledMenu ref={menu}>
+        <StyledSection>
+          <StyledNavigation>
+            <StyledList ref={menuList}>
+              <li>
+                <StyledLink as={NavLink} to="/">
+                  home
+                </StyledLink>
+              </li>
+              <li>
+                <StyledLink as={NavLink} to="/">
+                  discovery
+                </StyledLink>
+              </li>
+              <li>
+                <StyledLink as={NavLink} to="/">
+                  destinations
+                </StyledLink>
+              </li>
+              <li>
+                <StyledLink as={NavLink} to="/">
+                  about
+                </StyledLink>
+              </li>
+              <li>
+                <StyledLink as={NavLink} to="/">
+                  contact
+                </StyledLink>
+              </li>
+            </StyledList>
+          </StyledNavigation>
+          <StyledContact>contact@trvl.com</StyledContact>
+        </StyledSection>
+        <StyledRightSection>
+          <StyledBox>
+            <StyledFigure>
+              <blockquote>
+                <StyledParagraphQuote ref={menuQuote}>
+                  The gladdest moment in human life is a departure into unknown lands
+                </StyledParagraphQuote>
+              </blockquote>
+              <StyledQuoteFooter ref={menuQuoteAuthor}>
+                -<cite>Richard Francis Burton</cite>
+              </StyledQuoteFooter>
+            </StyledFigure>
+          </StyledBox>
+          <StyledImagesBox>
+            <StyledPicture>
+              <source srcSet={germanyWebp} type="image/webp" />
+              <StyledImg
+                ref={(el) => {
+                  menuImages.current[0] = el;
+                }}
+                src={germanyJpg}
+                alt="Gray bridge and trees"
+              />
+              <StyledImageLayer
+                ref={(el) => {
+                  menuLayers.current[0] = el;
+                }}
+              />
+            </StyledPicture>
+            <StyledPicture>
+              <source srcSet={norwayWebp} type="image/webp" />
+              <StyledImg
+                ref={(el) => {
+                  menuImages.current[1] = el;
+                }}
+                src={norwayJpg}
+                alt="Scenic view of snow capped mountains during night"
+              />
+              <StyledImageLayer
+                ref={(el) => {
+                  menuLayers.current[1] = el;
+                }}
+              />
+            </StyledPicture>
+          </StyledImagesBox>
+        </StyledRightSection>
+      </StyledMenu>
+      <StyledMenuBackground ref={menuBackground} />
     </StyledMenuWrapper>
   );
 };

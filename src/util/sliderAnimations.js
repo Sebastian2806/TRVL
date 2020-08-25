@@ -92,13 +92,3 @@ export const descriptionOut = (el) => {
     ease,
   });
 };
-
-// export const initCardsDescriptionPosition = (cards, focusedEl) => {
-//   cards.forEach((el, i) => {
-//     if (i !== focusedEl)
-//       gsap.set([...[...el.children][0].children], {
-//         opacity: 0,
-//         visibility: 'hidden',
-//       });
-//   });
-// };

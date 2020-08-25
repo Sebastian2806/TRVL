@@ -1,76 +1,74 @@
 import { gsap } from 'gsap';
 
-export const openMenu = (menu, menuBackground, menuList) => {
+const ease = 'expo.inOut';
+
+export const openMenu = (
+  menuWrapper,
+  menu,
+  menuBackground,
+  menuList,
+  menuQuote,
+  menuQuoteAuthor,
+  menuImages,
+  menuLayers,
+) => {
   const tl = gsap.timeline();
-  const liArr = [...menuList.current.children];
 
-  const backgrounds = liArr.map((el) => [...el.children][0]);
-  const paragraphs = liArr.map((el) => [...el.children][1]);
+  gsap.to(menuQuoteAuthor, 0, { opacity: 0 });
 
-  tl.to([menu, menuBackground], {
-    duration: 0,
-    y: '0%',
-  })
-    .from([menu, menuBackground], {
-      duration: 0.8,
-      y: '-100%',
-      ease: 'power3.inOut',
-      skewY: 3,
-      transformOrigin: 'top right',
-      stagger: {
-        amount: 0.09,
-        from: 'end',
+  tl.to(menuWrapper, 0, { display: 'block' })
+    .fromTo(
+      [menu, menuBackground],
+      { skewY: 2 },
+      {
+        duration: 0.8,
+        y: 0,
+        skewY: 0,
+        ease,
+        stagger: {
+          amount: 0.06,
+          from: 'end',
+        },
       },
-    })
-    .to([...backgrounds], {
-      delay: -0.3,
-      duration: 0.7,
-      ease: 'power3.inOut',
-      scaleX: 1,
-      transformOrigin: 'left',
-      stagger: {
-        amount: 0.06,
+    )
+    .fromTo(
+      [...menuList.children],
+      { autoAlpha: 0, x: -70 },
+      {
+        duration: 0.5,
+        x: 0,
+        autoAlpha: 1,
+        ease,
+        stagger: 0.06,
       },
-    })
-    .to([...paragraphs], {
-      duration: 0,
-      autoAlpha: 1,
-    })
-    .to([...backgrounds], {
-      duration: 0.7,
-      ease: 'power3.inOut',
-      scaleX: 0,
-      transformOrigin: 'right',
-      stagger: {
-        amount: 0.06,
-      },
-    });
+    )
+    .fromTo(
+      menuQuote,
+      { y: 100, skewY: 5, autoAlpha: 0 },
+      { duration: 2, delay: -0.5, autoAlpha: 1, y: 0, skewY: 0, ease: 'power4.out' },
+    )
+    .fromTo(
+      menuQuoteAuthor,
+      { y: 30, autoAlpha: 0 },
+      { duration: 1, delay: -0.6, y: 0, autoAlpha: 1, ease: 'power4.out' },
+    )
+    .fromTo(
+      menuLayers,
+      { scaleX: 1 },
+      { duration: 1.2, delay: -2.4, scaleX: 0, transformOrigin: 'top right', ease, stagger: 0.15 },
+    )
+    .fromTo(menuImages, { scale: 1.4 }, { duration: 1.2, delay: -2.4, scale: 1, ease, stagger: 0.15 });
 };
 
-export const closeMenu = (menu, menuBackground, menuList) => {
-  const liArr = [...menuList.current.children];
+export const closeMenu = (menuWrapper, menu, menuBackground) => {
+  const tl = gsap.timeline();
 
-  const backgrounds = liArr.map((el) => [...el.children][0]);
-  const paragraphs = liArr.map((el) => [...el.children][1]);
-
-  gsap.to([menu, menuBackground], {
-    ease: 'power3.inOut',
-    duration: 1,
+  tl.to([menu, menuBackground], {
+    duration: 0.8,
     y: '-100%',
+    ease,
     stagger: {
-      amount: 0.09,
+      amount: 0.06,
     },
-  });
-
-  gsap.to([...backgrounds], {
-    duration: 0,
-    delay: 1,
-    scaleX: 0,
-  });
-
-  gsap.to([...paragraphs], {
-    duration: 0,
-    delay: 1,
-    autoAlpha: 0,
-  });
+  }).to(menuWrapper, 0, { display: 'none' });
 };

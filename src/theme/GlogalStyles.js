@@ -3,7 +3,8 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
     :root {
         font-family: 'Poppins', sans-serif;  
-        --vh: 100vh;
+        --vh: 1vh;
+        font-size:62.5%;
     }
 
     * {
@@ -12,8 +13,7 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         margin: 0;
-        padding: 0;
-        font-size:62.5%;
+        padding: 0; 
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
