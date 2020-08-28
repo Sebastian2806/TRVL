@@ -8,10 +8,16 @@ import SliderContext from '../../context/SliderContext';
 
 const StyledWrapper = styled.div`
   position: relative;
-  width: 1400px;
-  height: 550px;
+  width: 100%;
+  max-width: 1400px;
+  height: 450px;
   overflow: hidden;
   perspective: 2000px;
+  margin-top: 60px;
+
+  @media (min-height: 650px) {
+    height: 600px;
+  }
 `;
 
 const CardItem = ({ cardNumber }) => {

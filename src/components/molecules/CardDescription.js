@@ -9,6 +9,10 @@ const StyledWrapper = styled.div`
   flex-shrink: 0;
   z-index: 15;
 
+  @media (max-width: 400px) {
+    max-width: 300px;
+  }
+
   &.desc-enter {
     opacity: 0;
     visibility: 'hidden';
@@ -48,16 +52,28 @@ const StyledLocalizationWrapper = styled.div`
   display: flex;
 `;
 
+const StyledCardTitle = styled(Paragraph)`
+  text-transform: uppercase;
+  font-size: ${({ theme }) => theme.fonts.xl};
+
+  @media (min-width: 756px) {
+    font-size: ${({ theme }) => theme.fonts.xxl};
+  }
+`;
+
 const StyledLocalizationName = styled(Paragraph)`
   margin-left: 10px;
+  font-size: ${({ theme }) => theme.fonts.l};
+
+  @media (min-width: 756px) {
+    font-size: ${({ theme }) => theme.fonts.xl};
+  }
 `;
 
 const CardDescription = ({ name, localization }) => {
   return (
     <StyledWrapper>
-      <Paragraph as="h2" uppercase="true" fontSize="l">
-        {name}
-      </Paragraph>
+      <StyledCardTitle as="h2">{name}</StyledCardTitle>
       <StyledLine />
       <StyledLocalizationWrapper>
         <img src={MapPin} alt="Map pin" />

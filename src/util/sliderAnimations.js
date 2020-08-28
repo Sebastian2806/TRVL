@@ -2,8 +2,9 @@ import { gsap } from 'gsap';
 
 export const initCardPosition = (ref, pos, sign = 1, init = false) => {
   const duration = 0.6;
-  const ease = 'power3.inOut';
+  const ease = 'expo.inOut';
   const delay = 0.3;
+  let delayWhenIn = 0;
 
   if (pos === 2) {
     gsap.to(ref, {
@@ -17,28 +18,36 @@ export const initCardPosition = (ref, pos, sign = 1, init = false) => {
       delay,
     });
   } else if (pos === 1 || pos === 3) {
+    delayWhenIn = 0.05;
     gsap.to(ref, {
       duration: init ? 0 : duration,
       zIndex: 8,
-      opacity: 0.8,
+      opacity: 0.7,
       x: 260 * sign,
       scale: 0.95,
-      rotationY: -25 * sign,
+      rotationY: -32 * sign,
       ease,
       delay,
     });
   } else if (pos === 0 || pos === 4) {
+    delayWhenIn = 0.1;
     gsap.to(ref, {
       duration: init ? 0 : duration,
       zIndex: 6,
-      opacity: 0.6,
+      opacity: 0.4,
       x: 2 * 260 * sign,
       scale: 0.9,
-      rotationY: -25 * sign,
+      rotationY: -32 * sign,
       ease,
       delay,
     });
   }
+
+  gsap.to(ref, 1.5, {
+    y: 0,
+    ease,
+    delay: delayWhenIn,
+  });
 };
 
 export const descriptionIn = (el) => {
@@ -49,9 +58,10 @@ export const descriptionIn = (el) => {
 
   gsap.fromTo(
     [title, place],
-    { y: 50 },
+    { y: 50, autoAlpha: 0 },
     {
-      delay: 0.9,
+      delay: 1.3,
+      autoAlpha: 1,
       duration: 0.5,
       y: 0,
       ease,
@@ -63,8 +73,9 @@ export const descriptionIn = (el) => {
     line,
     { scaleX: 0 },
     {
-      delay: 0.9,
+      delay: 1.5,
       duration: 0.4,
+      opacity: 1,
       scaleX: 1,
       transformOrigin: 'left',
       ease,

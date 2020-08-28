@@ -25,7 +25,7 @@ const StyledWrapper = styled.main`
 `;
 
 const StyledButtonsWrapper = styled.div`
-  z-index: 50;
+  z-index: 9;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -34,6 +34,17 @@ const StyledButtonsWrapper = styled.div`
   align-items: center;
   height: 50px;
   width: 100%;
+
+  @media (min-height: 650px) {
+    height: 100px;
+  }
+
+  @media (min-width: 786px) {
+    top: 50%;
+    transform: translateY(-100%);
+    justify-content: space-between;
+    padding: 0 20px;
+  }
 `;
 
 const StyledBackground = styled(StyledFullWindow)`
