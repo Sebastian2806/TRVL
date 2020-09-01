@@ -12,15 +12,15 @@
 - [styled-components](https://styled-components.com/)
 - lodash
   - [debounce](https://lodash.com/docs/4.17.15#debounce)
-  - [throttle](https://lodash.com/docs/4.17.15#throttle)
 - eslint with [Aribnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb) config
 
 I planning to do:
 
 - [ ] animated background dependent on which card is on center
-- [ ] better menu content
-- [ ] adjust the slider to small mobile devices
-- [ ] a timer that automatically changing the currently active/center card
+- [x] better menu content
+- [x] adjust the slider to small mobile devices
+- [x] adjust card size when we resize page
+- [ ] font sizes on small devices
 
 If you want to see demo you can click the link below:
 https://sebastian2806.github.io/TRVL/
