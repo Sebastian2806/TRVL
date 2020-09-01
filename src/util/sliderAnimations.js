@@ -1,49 +1,45 @@
 import { gsap } from 'gsap';
 
-export const initCardPosition = (ref, pos, sign = 1, init = false) => {
-  // const width = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--cardWidth'), 10);
-  const width = window.innerHeight < 650 ? 208 : 260;
-  const duration = 0.6;
-  const ease = 'expo.inOut';
+export const initCardPosition = (ref, position, init = false) => {
+  const sign = position === 0 || position === 1 ? -1 : 1;
+  const duration = init ? 0 : 0.6;
   const delay = init ? 0 : 0.3;
+  const ease = 'expo.inOut';
+  let width = 0;
   let delayWhenIn = 0;
+  let scale = 1;
+  let opacity = 1;
+  let rotationY = 0;
+  let zIndex = 10;
 
-  if (pos === 2) {
-    gsap.to(ref, {
-      duration: init ? 0 : duration,
-      zIndex: 10,
-      opacity: 1,
-      x: 0,
-      scale: 1,
-      rotationY: 0,
-      ease,
-      delay,
-    });
-  } else if (pos === 1 || pos === 3) {
-    delayWhenIn = 0.05;
-    gsap.to(ref, {
-      duration: init ? 0 : duration,
-      zIndex: 8,
-      opacity: 0.7,
-      x: width * sign,
-      scale: 0.95,
-      rotationY: -32 * sign,
-      ease,
-      delay,
-    });
-  } else if (pos === 0 || pos === 4) {
-    delayWhenIn = 0.1;
-    gsap.to(ref, {
-      duration: init ? 0 : duration,
-      zIndex: 6,
-      opacity: 0.4,
-      x: 2 * width * sign,
-      scale: 0.9,
-      rotationY: -32 * sign,
-      ease,
-      delay,
-    });
+  if (position !== 2) {
+    width = window.innerHeight < 650 ? 208 : 260;
+    rotationY = -32 * sign;
   }
+
+  if (position === 1 || position === 3) {
+    delayWhenIn = 0.05;
+    scale = 0.95;
+    opacity = 0.7;
+    zIndex = 8;
+  } else if (position === 0 || position === 4) {
+    delayWhenIn = 0.1;
+    width *= 2;
+    scale = 0.9;
+    opacity = 0.4;
+    zIndex = 6;
+  }
+
+  gsap.to(ref, {
+    duration,
+    zIndex,
+    opacity,
+    x: width * sign,
+    scale,
+    rotationY,
+    ease,
+    delay,
+  });
 
   if (init) {
     gsap.to(ref, 1.5, {
