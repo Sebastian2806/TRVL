@@ -1,9 +1,11 @@
 import { gsap } from 'gsap';
 
 export const initCardPosition = (ref, pos, sign = 1, init = false) => {
+  // const width = parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--cardWidth'), 10);
+  const width = window.innerHeight < 650 ? 208 : 260;
   const duration = 0.6;
   const ease = 'expo.inOut';
-  const delay = 0.3;
+  const delay = init ? 0 : 0.3;
   let delayWhenIn = 0;
 
   if (pos === 2) {
@@ -23,7 +25,7 @@ export const initCardPosition = (ref, pos, sign = 1, init = false) => {
       duration: init ? 0 : duration,
       zIndex: 8,
       opacity: 0.7,
-      x: 260 * sign,
+      x: width * sign,
       scale: 0.95,
       rotationY: -32 * sign,
       ease,
@@ -35,7 +37,7 @@ export const initCardPosition = (ref, pos, sign = 1, init = false) => {
       duration: init ? 0 : duration,
       zIndex: 6,
       opacity: 0.4,
-      x: 2 * 260 * sign,
+      x: 2 * width * sign,
       scale: 0.9,
       rotationY: -32 * sign,
       ease,
@@ -43,11 +45,13 @@ export const initCardPosition = (ref, pos, sign = 1, init = false) => {
     });
   }
 
-  gsap.to(ref, 1.5, {
-    y: 0,
-    ease,
-    delay: delayWhenIn,
-  });
+  if (init) {
+    gsap.to(ref, 1.5, {
+      y: 0,
+      ease,
+      delay: delayWhenIn,
+    });
+  }
 };
 
 export const descriptionIn = (el) => {
