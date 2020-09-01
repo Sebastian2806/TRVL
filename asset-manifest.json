@@ -1,20 +1,19 @@
 {
   "files": {
-    "main.js": "/TRVL/static/js/main.f984705a.chunk.js",
-    "main.js.map": "/TRVL/static/js/main.f984705a.chunk.js.map",
+    "main.js": "/TRVL/static/js/main.3d4a5bc1.chunk.js",
+    "main.js.map": "/TRVL/static/js/main.3d4a5bc1.chunk.js.map",
     "runtime-main.js": "/TRVL/static/js/runtime-main.44679bac.js",
     "runtime-main.js.map": "/TRVL/static/js/runtime-main.44679bac.js.map",
-    "static/js/2.6fb5f20b.chunk.js": "/TRVL/static/js/2.6fb5f20b.chunk.js",
-    "static/js/2.6fb5f20b.chunk.js.map": "/TRVL/static/js/2.6fb5f20b.chunk.js.map",
+    "static/js/2.e0dd15ef.chunk.js": "/TRVL/static/js/2.e0dd15ef.chunk.js",
+    "static/js/2.e0dd15ef.chunk.js.map": "/TRVL/static/js/2.e0dd15ef.chunk.js.map",
     "index.html": "/TRVL/index.html",
-    "precache-manifest.b8a7e49870dba2e6746006fef6126680.js": "/TRVL/precache-manifest.b8a7e49870dba2e6746006fef6126680.js",
+    "precache-manifest.f9c9c7db84ee52a2e7c7041962692af3.js": "/TRVL/precache-manifest.f9c9c7db84ee52a2e7c7041962692af3.js",
     "service-worker.js": "/TRVL/service-worker.js",
-    "static/js/2.6fb5f20b.chunk.js.LICENSE.txt": "/TRVL/static/js/2.6fb5f20b.chunk.js.LICENSE.txt",
+    "static/js/2.e0dd15ef.chunk.js.LICENSE.txt": "/TRVL/static/js/2.e0dd15ef.chunk.js.LICENSE.txt",
     "static/media/arrow-left.svg": "/TRVL/static/media/arrow-left.218d7771.svg",
     "static/media/arrow-right.svg": "/TRVL/static/media/arrow-right.14d16427.svg",
-    "static/media/back-menu-img.webp": "/TRVL/static/media/back-menu-img.6ebbd6ff.webp",
-    "static/media/back-menu-img.jpg": "/TRVL/static/media/back-menu-img.d372ecca.jpg",
-    "static/media/close-btn.svg": "/TRVL/static/media/close-btn.a846ae37.svg",
+    "static/media/germany.jpg": "/TRVL/static/media/germany.20d932c9.jpg",
+    "static/media/germany.webp": "/TRVL/static/media/germany.24df1cd9.webp",
     "static/media/grand_canyon.webp": "/TRVL/static/media/grand_canyon.1656d466.webp",
     "static/media/grand_canyon.jpg": "/TRVL/static/media/grand_canyon.468a854d.jpg",
     "static/media/great_barrier_reef.jpg": "/TRVL/static/media/great_barrier_reef.67cb0553.jpg",
@@ -27,12 +26,12 @@
     "static/media/moraine_lake.webp": "/TRVL/static/media/moraine_lake.afb20ba1.webp",
     "static/media/niagara_falls.jpg": "/TRVL/static/media/niagara_falls.6cb14263.jpg",
     "static/media/niagara_falls.webp": "/TRVL/static/media/niagara_falls.e11b3535.webp",
-    "static/media/top-menu-img.webp": "/TRVL/static/media/top-menu-img.0b97371e.webp",
-    "static/media/top-menu-img.jpg": "/TRVL/static/media/top-menu-img.7d5feab4.jpg"
+    "static/media/norway.webp": "/TRVL/static/media/norway.0859574d.webp",
+    "static/media/norway.jpg": "/TRVL/static/media/norway.cd63d89d.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.44679bac.js",
-    "static/js/2.6fb5f20b.chunk.js",
-    "static/js/main.f984705a.chunk.js"
+    "static/js/2.e0dd15ef.chunk.js",
+    "static/js/main.3d4a5bc1.chunk.js"
   ]
 }

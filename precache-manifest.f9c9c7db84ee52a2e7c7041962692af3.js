@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "21e681dbd100c4ec248fef669ec25f4a",
+    "revision": "621edccad5fdb49aad2811930820b5e9",
     "url": "/TRVL/index.html"
   },
   {
-    "revision": "4c0defc2c0741f10a2bb",
-    "url": "/TRVL/static/js/2.6fb5f20b.chunk.js"
+    "revision": "28d2ececd315c1d9832c",
+    "url": "/TRVL/static/js/2.e0dd15ef.chunk.js"
   },
   {
     "revision": "bc26109bc1e9c310b829dec6887e7a8d",
-    "url": "/TRVL/static/js/2.6fb5f20b.chunk.js.LICENSE.txt"
+    "url": "/TRVL/static/js/2.e0dd15ef.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "10fd5f081e7bc710a155",
-    "url": "/TRVL/static/js/main.f984705a.chunk.js"
+    "revision": "fc79ded6230a8110f201",
+    "url": "/TRVL/static/js/main.3d4a5bc1.chunk.js"
   },
   {
     "revision": "febc6868f14b19c49baf",
@@ -28,16 +28,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/TRVL/static/media/arrow-right.14d16427.svg"
   },
   {
-    "revision": "6ebbd6ff553bdb6be89d73d12c2106cc",
-    "url": "/TRVL/static/media/back-menu-img.6ebbd6ff.webp"
+    "revision": "20d932c983816f0a628925fee1c358e6",
+    "url": "/TRVL/static/media/germany.20d932c9.jpg"
   },
   {
-    "revision": "d372ecca1703f296a03b144cf8f56f99",
-    "url": "/TRVL/static/media/back-menu-img.d372ecca.jpg"
-  },
-  {
-    "revision": "a846ae371479e8795b96f56ffbe35f37",
-    "url": "/TRVL/static/media/close-btn.a846ae37.svg"
+    "revision": "24df1cd94cb5c682a4b38d1a54cbca93",
+    "url": "/TRVL/static/media/germany.24df1cd9.webp"
   },
   {
     "revision": "1656d466565eaceacae478725ed24174",
@@ -88,11 +84,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/TRVL/static/media/niagara_falls.e11b3535.webp"
   },
   {
-    "revision": "0b97371e0c17958668a1f60e1e15b491",
-    "url": "/TRVL/static/media/top-menu-img.0b97371e.webp"
+    "revision": "0859574d2a59cd93424122c7fcf9c984",
+    "url": "/TRVL/static/media/norway.0859574d.webp"
   },
   {
-    "revision": "7d5feab4356fde0d6677c58445cf17b0",
-    "url": "/TRVL/static/media/top-menu-img.7d5feab4.jpg"
+    "revision": "cd63d89d975fadc7cfd8343bb6abad43",
+    "url": "/TRVL/static/media/norway.cd63d89d.jpg"
   }
 ]);
