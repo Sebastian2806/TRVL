@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/TRVL/static/js/main.3d4a5bc1.chunk.js",
-    "main.js.map": "/TRVL/static/js/main.3d4a5bc1.chunk.js.map",
+    "main.js": "/TRVL/static/js/main.61f703f8.chunk.js",
+    "main.js.map": "/TRVL/static/js/main.61f703f8.chunk.js.map",
     "runtime-main.js": "/TRVL/static/js/runtime-main.44679bac.js",
     "runtime-main.js.map": "/TRVL/static/js/runtime-main.44679bac.js.map",
-    "static/js/2.e0dd15ef.chunk.js": "/TRVL/static/js/2.e0dd15ef.chunk.js",
-    "static/js/2.e0dd15ef.chunk.js.map": "/TRVL/static/js/2.e0dd15ef.chunk.js.map",
+    "static/js/2.50cff81f.chunk.js": "/TRVL/static/js/2.50cff81f.chunk.js",
+    "static/js/2.50cff81f.chunk.js.map": "/TRVL/static/js/2.50cff81f.chunk.js.map",
     "index.html": "/TRVL/index.html",
-    "precache-manifest.f9c9c7db84ee52a2e7c7041962692af3.js": "/TRVL/precache-manifest.f9c9c7db84ee52a2e7c7041962692af3.js",
+    "precache-manifest.b6c61cf3ba7ab80a8022368d85206699.js": "/TRVL/precache-manifest.b6c61cf3ba7ab80a8022368d85206699.js",
     "service-worker.js": "/TRVL/service-worker.js",
-    "static/js/2.e0dd15ef.chunk.js.LICENSE.txt": "/TRVL/static/js/2.e0dd15ef.chunk.js.LICENSE.txt",
+    "static/js/2.50cff81f.chunk.js.LICENSE.txt": "/TRVL/static/js/2.50cff81f.chunk.js.LICENSE.txt",
     "static/media/arrow-left.svg": "/TRVL/static/media/arrow-left.218d7771.svg",
     "static/media/arrow-right.svg": "/TRVL/static/media/arrow-right.14d16427.svg",
     "static/media/germany.jpg": "/TRVL/static/media/germany.20d932c9.jpg",
@@ -31,7 +31,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.44679bac.js",
-    "static/js/2.e0dd15ef.chunk.js",
-    "static/js/main.3d4a5bc1.chunk.js"
+    "static/js/2.50cff81f.chunk.js",
+    "static/js/main.61f703f8.chunk.js"
   ]
 }
