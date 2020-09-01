@@ -8,7 +8,7 @@ const StyledFullWindow = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: -2;
   width: 100%;
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
@@ -52,6 +52,12 @@ const StyledBackground = styled(StyledFullWindow)`
   background-size: cover;
 `;
 
+const StyledBlur = styled(StyledFullWindow)`
+  background: ${({ theme }) => theme.dark};
+  opacity: 0.8;
+  z-index: -1;
+`;
+
 const Home = () => {
   // const img = useCurrentPlace(currentPlace).src.jpg;
 
@@ -59,6 +65,7 @@ const Home = () => {
     <HeaderTemplate>
       <StyledBackground img={`${places[2].src.jpg}`} />
       <StyledFullWindow />
+      <StyledBlur />
       <StyledWrapper>
         <Slider.Wrapper>
           <Slider.CardItem cardNumber={0} />
