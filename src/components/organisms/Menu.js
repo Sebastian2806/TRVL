@@ -137,7 +137,7 @@ const StyledBox = styled.div`
     display: flex;
   }
 
-  @media (min-width: 1440px) and {
+  @media (min-width: 1440px) {
     justify-content: flex-start;
   }
 `;

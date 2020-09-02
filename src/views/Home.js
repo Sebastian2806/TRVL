@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
-// import { gsap } from 'gsap';
+import { gsap } from 'gsap';
 // import _ from 'lodash';
 import HeaderTemplate from '../components/templates/HeaderTemplate';
 import * as Slider from '../components/organisms/Slider';
@@ -14,7 +14,6 @@ const StyledFullWindow = styled.div`
   width: 100%;
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
-  /* backdrop-filter: blur(2px) opacity(70%); */
 `;
 
 const StyledWrapper = styled.main`
@@ -50,66 +49,41 @@ const StyledButtonsWrapper = styled.div`
 `;
 
 const StyledBackground = styled(StyledFullWindow)`
-  background: url(${({ img }) => `'${img}'`}) no-repeat center;
+  /* background: url(${({ img }) => `'${img}'`}) no-repeat center; */
+  background: url(${() => `'${places[2].src.jpg}'`}) no-repeat center;
   background-size: cover;
 `;
 
 const StyledBlur = styled(StyledFullWindow)`
   background: ${({ theme }) => theme.dark};
   opacity: 0.8;
+  backdrop-filter: blur(10px);
   z-index: -1;
 `;
 
 const Home = () => {
-  // const img = useCurrentPlace(currentPlace).src.jpg;
-  // const background = useRef(null);
+  const [background, setBackground] = useState(2);
+  const bc = useRef(null);
 
-  // const update = () => {
-  //   // const currentBaseFre = background.current.getAttribute('baseFrequency');
-  //   // console.log(currentBaseFre);
-  //   // if (currentBaseFre > 0)
-  //   background.current.setAttribute('baseFrequency', Math.random() * 0.1);
-  // };
+  useEffect(() => {
+    const tl = gsap.timeline();
 
-  // useEffect(() => {
-  //   const throttledUpdate = _.throttle(update, 10, { trailing: false });
+    gsap.set(bc.current, {
+      backgroundImage: `url(${places[background].src.jpg})`,
+    });
 
-  //   gsap.to(background.current, 2, {
-  //     onUpdate: () => {
-  //       throttledUpdate();
-  //     },
-  //     onComplete: () => {
-  //       background.current.setAttribute('baseFrequency', 0);
-  //     },
-  //     // baseFrequency: 1,
-  //     // setAttribute('baseFrequency', bfStr);
-  //   });
-  // }, []);
+    tl.from(bc.current, 1.5, {
+      opacity: 0.2,
+    });
+  }, [background]);
 
   return (
     <HeaderTemplate>
-      {/* <svg width="100vw" height="100vh">
-        <defs>
-          <filter id="turbulence" width="100%" height="100%">
-            <feTurbulence
-              ref={background}
-              id="feturbulence"
-              type="fractalNoise"
-              numOctaves="3"
-              seed="2"
-              baseFrequency="0.1"
-            />
-            <feDisplacementMap xChannelSelector="G" yChannelSelector="G" scale="45" in="SourceGraphic" />
-          </filter>
-        </defs>
-
-        <image x="0" y="0" href={`${places[2].src.jpg}`} filter="url(#turbulence)" />
-      </svg> */}
-      <StyledBackground img={`${places[2].src.jpg}`} />
+      <StyledBackground ref={bc} />
       <StyledFullWindow />
       <StyledBlur />
       <StyledWrapper>
-        <Slider.Wrapper>
+        <Slider.Wrapper setBackground={setBackground}>
           <Slider.CardItem cardNumber={0} />
           <Slider.CardItem cardNumber={1} />
           <Slider.CardItem cardNumber={2} />

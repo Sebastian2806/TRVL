@@ -37,7 +37,7 @@ const Button = ({ direction }) => {
   return <Arrow disabled={disabled} direction={direction} onClick={() => changeCardsDirection(direction)} />;
 };
 
-const Wrapper = ({ children }) => {
+const Wrapper = ({ children, setBackground }) => {
   const [cardsDirection, setCardsDirection] = useState([0, 1, 2, 3, 4]);
   const [disabled, setDisabled] = useState(false);
 
@@ -61,6 +61,7 @@ const Wrapper = ({ children }) => {
       cardsArr = [...cardsDirectionCopy.reverse(), ...centerElements];
       setCardsDirection(cardsArr);
     }
+    setBackground(cardsArr[2]);
   };
 
   return (
@@ -72,6 +73,7 @@ const Wrapper = ({ children }) => {
 
 Wrapper.propTypes = {
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+  setBackground: PropTypes.func.isRequired,
 };
 
 Button.propTypes = {
