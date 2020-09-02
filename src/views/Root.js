@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import _ from 'lodash';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { useSetHeight } from '../hooks/useSetHeight';
+import { setVH } from '../util/helpers';
 import Home from './Home';
 import MainTemplate from '../components/templates/MainTemplate';
 
-const setHeight = useSetHeight();
+const setHeight = setVH();
 
 const Root = () => {
   useEffect(() => {
