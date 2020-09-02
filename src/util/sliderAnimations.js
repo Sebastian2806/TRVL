@@ -13,7 +13,8 @@ export const initCardPosition = (ref, position, init = false) => {
   let zIndex = 10;
 
   if (position !== 2) {
-    width = window.innerHeight < 650 ? 208 : 260;
+    width = 260;
+    if (window.innerHeight < 650) width = window.innerHeight < 500 ? 156 : 208;
     rotationY = -32 * sign;
   }
 

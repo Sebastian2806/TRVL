@@ -41,7 +41,7 @@ const StyledButtonsWrapper = styled.div`
     height: 100px;
   }
 
-  @media (min-width: 786px) {
+  @media (min-width: 786px), (orientation: landscape) {
     top: 50%;
     transform: translateY(-100%);
     justify-content: space-between;

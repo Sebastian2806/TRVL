@@ -56,7 +56,7 @@ const StyledCardTitle = styled(Paragraph)`
   text-transform: uppercase;
   font-size: ${({ theme }) => theme.fonts.xl};
 
-  @media (min-width: 756px) {
+  @media (min-width: 756px) and (min-height: 376px) {
     font-size: ${({ theme }) => theme.fonts.xxl};
   }
 `;

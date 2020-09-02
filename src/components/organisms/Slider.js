@@ -10,10 +10,14 @@ const StyledWrapper = styled.div`
   position: relative;
   width: 100%;
   max-width: 1400px;
-  height: 450px;
+  height: 350px;
   overflow: hidden;
   perspective: 2000px;
   margin-top: 60px;
+
+  @media (min-height: 500px) {
+    height: 450px;
+  }
 
   @media (min-height: 650px) {
     height: 600px;

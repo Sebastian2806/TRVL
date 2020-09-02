@@ -17,12 +17,17 @@ const StyledWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 208px;
-  height: 400px;
+  width: 156px;
+  height: 300px;
   z-index: 10;
   transform: translateX(-50%) translateY(100vh);
   background: url(${({ img }) => `"${img}"`}) no-repeat center;
   background-size: cover;
+
+  @media (min-height: 500px) {
+    width: 208px;
+    height: 400px;
+  }
 
   @media (min-height: 650px) {
     width: 260px;

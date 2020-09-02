@@ -66,11 +66,17 @@ const StyledList = styled.ul`
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-rows: repeat(5, 50px);
-  grid-gap: 10px;
+  grid-template-rows: repeat(5, 18px);
+  grid-gap: 6px;
 
-  @media (min-width: 300px) {
+  @media (min-height: 281px) {
+    grid-template-rows: repeat(5, 30px);
+    grid-gap: 12px;
+  }
+
+  @media (min-width: 300px) and (min-height: 480px) {
     grid-gap: 20px;
+    grid-template-rows: repeat(5, 50px);
   }
 `;
 
@@ -79,9 +85,13 @@ const StyledLink = styled(Paragraph)`
   text-decoration: none;
   letter-spacing: 1px;
   font-weight: ${({ theme }) => theme.weight.bold};
-  font-size: ${({ theme }) => theme.fonts.l};
+  font-size: ${({ theme }) => theme.fonts.s};
 
-  @media (min-width: 300px) {
+  @media (min-height: 281px) {
+    font-size: ${({ theme }) => theme.fonts.m};
+  }
+
+  @media (min-width: 300px) and (min-height: 480px) {
     font-size: ${({ theme }) => theme.fonts.xl};
   }
 `;
@@ -119,11 +129,15 @@ const StyledRightSection = styled(StyledSection)`
 const StyledBox = styled.div`
   width: 100%;
   height: 50%;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
 
-  @media (min-width: 1440px) {
+  @media (min-height: 600px) {
+    display: flex;
+  }
+
+  @media (min-width: 1440px) and {
     justify-content: flex-start;
   }
 `;
@@ -133,6 +147,7 @@ const StyledFigure = styled.figure`
   color: ${({ theme }) => theme.light};
   width: 70%;
   max-width: 600px;
+  display: block;
 
   & > blockquote {
     margin: 0;
@@ -164,6 +179,12 @@ const StyledQuoteFooter = styled.footer`
 
 const StyledImagesBox = styled(StyledBox)`
   flex-direction: column;
+  display: flex;
+  height: 100%;
+
+  @media (min-height: 600px) {
+    height: 50%;
+  }
 
   @media (min-width: 1024px) {
     flex-direction: row;
