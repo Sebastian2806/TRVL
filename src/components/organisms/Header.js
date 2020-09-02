@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
+import { gsap } from 'gsap';
 import Title from '../atoms/Title/Title';
-import menuIcon from '../../assets/icons/menu.svg';
-// import closeIcon from '../../assets/icons/close-btn.svg';
+import { ReactComponent as MenuIcon } from '../../assets/icons/menu.svg';
+import { ReactComponent as CloseIcon } from '../../assets/icons/close-menu.svg';
 import Menu from './Menu';
 
 const StyledWrapper = styled.header`
@@ -41,13 +42,93 @@ const StyledTitle = styled(Title)`
   z-index: 200;
 `;
 
+const StyledCloseIcon = styled(CloseIcon)`
+  display: none;
+`;
+
 const Header = () => {
+  const menuBtnOpen = useRef(null);
+  const menuBtnClose = useRef(null);
+
   const [menuSettings, setMenuSettings] = useState({
     isOpen: false,
     init: false,
   });
 
   const [disabled, setDisabled] = useState(false);
+
+  useEffect(() => {
+    const arrow = [...menuBtnClose.current.children].slice(0, 2);
+    const circle = [...menuBtnClose.current.children][2];
+    const tl = gsap.timeline();
+    const ease = 'power3.out';
+    if (menuSettings.isOpen) {
+      tl.to([...menuBtnOpen.current.children], 0.4, {
+        delay: 0.5,
+        stagger: 0.03,
+        css: {
+          strokeDashoffset: 24,
+        },
+        ease,
+      })
+        .to(menuBtnOpen.current, 0, {
+          display: 'none',
+        })
+        .to(menuBtnClose.current, 0, {
+          display: 'block',
+        })
+        .to([...arrow], 0.6, {
+          delay: 0.2,
+          css: {
+            strokeDashoffset: 0,
+          },
+          ease,
+        })
+        .to(circle, 0.6, {
+          delay: 0.2,
+          css: {
+            strokeDashoffset: 0,
+          },
+          ease,
+        });
+    } else {
+      tl.to(circle, 0.6, {
+        css: {
+          strokeDashoffset: 111,
+        },
+        ease,
+      })
+        .to(arrow[0], 0.6, {
+          css: {
+            strokeDashoffset: 14,
+          },
+          ease,
+        })
+        .to(arrow[1], 0.6, {
+          delay: -0.6,
+          css: {
+            strokeDashoffset: 20,
+          },
+          ease,
+        })
+        .to(menuBtnClose.current, 0, {
+          display: 'none',
+        })
+        .to(menuBtnOpen.current, 0, {
+          display: 'block',
+        })
+        .to([...menuBtnOpen.current.children], 0.4, {
+          stagger: {
+            each: 0.03,
+            from: 'end',
+          },
+          css: {
+            strokeDashoffset: 0,
+          },
+          ease,
+        });
+    }
+  }, [menuSettings]);
 
   const disabledMenu = () => {
     setDisabled(true);
@@ -68,8 +149,8 @@ const Header = () => {
     <StyledWrapper>
       <StyledTitle isOpen={menuSettings.isOpen}>TRVL</StyledTitle>
       <StyledMenuIconBtn disabled={disabled} onClick={handleClick}>
-        {/* <img src={menuSettings.isOpen ? closeIcon : menuIcon} alt="Menu icon" /> */}
-        <img src={menuIcon} alt="Menu icon" />
+        <MenuIcon ref={menuBtnOpen} />
+        <StyledCloseIcon ref={menuBtnClose} />
       </StyledMenuIconBtn>
       <Menu menuSettings={menuSettings} />
     </StyledWrapper>
