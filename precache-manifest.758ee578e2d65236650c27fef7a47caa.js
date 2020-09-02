@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "29dfea7822ad6c1b6734fe4679f18015",
+    "revision": "4a5c839ac1ac69f7a6f36aa1ed7f06ad",
     "url": "/TRVL/index.html"
   },
   {
-    "revision": "2712c2c0ff0c740d07da",
-    "url": "/TRVL/static/js/2.50cff81f.chunk.js"
+    "revision": "ef1b06e8cdc30e012a25",
+    "url": "/TRVL/static/js/2.ba5e1bfc.chunk.js"
   },
   {
     "revision": "bc26109bc1e9c310b829dec6887e7a8d",
-    "url": "/TRVL/static/js/2.50cff81f.chunk.js.LICENSE.txt"
+    "url": "/TRVL/static/js/2.ba5e1bfc.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a210afe4e4c01bca3c83",
-    "url": "/TRVL/static/js/main.61f703f8.chunk.js"
+    "revision": "117bc7b1f04de319cff6",
+    "url": "/TRVL/static/js/main.481672b9.chunk.js"
   },
   {
     "revision": "febc6868f14b19c49baf",
@@ -26,6 +26,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "14d164271101ca3109f85f68974b6169",
     "url": "/TRVL/static/media/arrow-right.14d16427.svg"
+  },
+  {
+    "revision": "3fa665d1515afe64eb046074d6515d3b",
+    "url": "/TRVL/static/media/close-menu.3fa665d1.svg"
   },
   {
     "revision": "20d932c983816f0a628925fee1c358e6",
@@ -64,8 +68,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/TRVL/static/media/map-pin.44869c6d.svg"
   },
   {
-    "revision": "100229fc7cd5e0d6e711db6f52e9b56c",
-    "url": "/TRVL/static/media/menu.100229fc.svg"
+    "revision": "7b160313a7afc37bed1c98c3c7dceaee",
+    "url": "/TRVL/static/media/menu.7b160313.svg"
   },
   {
     "revision": "4b59c8a71a0e52cf1054ddc2c241b9e6",

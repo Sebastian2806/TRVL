@@ -1,17 +1,18 @@
 {
   "files": {
-    "main.js": "/TRVL/static/js/main.61f703f8.chunk.js",
-    "main.js.map": "/TRVL/static/js/main.61f703f8.chunk.js.map",
+    "main.js": "/TRVL/static/js/main.481672b9.chunk.js",
+    "main.js.map": "/TRVL/static/js/main.481672b9.chunk.js.map",
     "runtime-main.js": "/TRVL/static/js/runtime-main.44679bac.js",
     "runtime-main.js.map": "/TRVL/static/js/runtime-main.44679bac.js.map",
-    "static/js/2.50cff81f.chunk.js": "/TRVL/static/js/2.50cff81f.chunk.js",
-    "static/js/2.50cff81f.chunk.js.map": "/TRVL/static/js/2.50cff81f.chunk.js.map",
+    "static/js/2.ba5e1bfc.chunk.js": "/TRVL/static/js/2.ba5e1bfc.chunk.js",
+    "static/js/2.ba5e1bfc.chunk.js.map": "/TRVL/static/js/2.ba5e1bfc.chunk.js.map",
     "index.html": "/TRVL/index.html",
-    "precache-manifest.b6c61cf3ba7ab80a8022368d85206699.js": "/TRVL/precache-manifest.b6c61cf3ba7ab80a8022368d85206699.js",
+    "precache-manifest.758ee578e2d65236650c27fef7a47caa.js": "/TRVL/precache-manifest.758ee578e2d65236650c27fef7a47caa.js",
     "service-worker.js": "/TRVL/service-worker.js",
-    "static/js/2.50cff81f.chunk.js.LICENSE.txt": "/TRVL/static/js/2.50cff81f.chunk.js.LICENSE.txt",
+    "static/js/2.ba5e1bfc.chunk.js.LICENSE.txt": "/TRVL/static/js/2.ba5e1bfc.chunk.js.LICENSE.txt",
     "static/media/arrow-left.svg": "/TRVL/static/media/arrow-left.218d7771.svg",
     "static/media/arrow-right.svg": "/TRVL/static/media/arrow-right.14d16427.svg",
+    "static/media/close-menu.3fa665d1.svg": "/TRVL/static/media/close-menu.3fa665d1.svg",
     "static/media/germany.jpg": "/TRVL/static/media/germany.20d932c9.jpg",
     "static/media/germany.webp": "/TRVL/static/media/germany.24df1cd9.webp",
     "static/media/grand_canyon.webp": "/TRVL/static/media/grand_canyon.1656d466.webp",
@@ -21,7 +22,7 @@
     "static/media/lake_bled.jpg": "/TRVL/static/media/lake_bled.304e4050.jpg",
     "static/media/lake_bled.webp": "/TRVL/static/media/lake_bled.c944591b.webp",
     "static/media/map-pin.svg": "/TRVL/static/media/map-pin.44869c6d.svg",
-    "static/media/menu.svg": "/TRVL/static/media/menu.100229fc.svg",
+    "static/media/menu.7b160313.svg": "/TRVL/static/media/menu.7b160313.svg",
     "static/media/moraine_lake.jpg": "/TRVL/static/media/moraine_lake.4b59c8a7.jpg",
     "static/media/moraine_lake.webp": "/TRVL/static/media/moraine_lake.afb20ba1.webp",
     "static/media/niagara_falls.jpg": "/TRVL/static/media/niagara_falls.6cb14263.jpg",
@@ -31,7 +32,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.44679bac.js",
-    "static/js/2.50cff81f.chunk.js",
-    "static/js/main.61f703f8.chunk.js"
+    "static/js/2.ba5e1bfc.chunk.js",
+    "static/js/main.481672b9.chunk.js"
   ]
 }
