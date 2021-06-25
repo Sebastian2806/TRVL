@@ -23,7 +23,7 @@ I planning to do:
 - [ ] font sizes on small devices
 
 If you want to see demo you can click the link below:
-https://sebastian2806.github.io/TRVL/
+https://zawolanski.github.io/TRVL/
 
 If you want to see the project designed in Figma you can click the link below:
 https://www.figma.com/file/yyKpN74Oocgh9BpjpMp5rr/TRVL?node-id=0%3A1
